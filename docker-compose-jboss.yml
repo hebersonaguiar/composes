@@ -4,12 +4,9 @@ services:
   Jboss:
     restart: always
     image: jboss/wildfly:8.2.1.Final
-    #image: jboss/wildfly:8.2.0.Final
     hostname: jboss
     container_name: jboss
     ports:
       - "8080:8080"
       - "9990:9990"
     command: /opt/jboss/wildfly/bin/standalone.sh -bmanagement 0.0.0.0 
-    #volumes:
-    #  - /srv/apps/jboss:/opt/jboss/wildfly/standalone/deployments

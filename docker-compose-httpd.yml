@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  httpd:
+    restart: always
+    image: httpd:2.4 
+    hostname: httpd
+    container_name: httpd
+    external_links:
+      - Redmine:redmine
+      - Jboss:jboss
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /srv/httpd/httpd:/usr/local/apache2/conf

@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+
+  kanboard:
+    image: kanboard:v1.2.8-apache
+    hostname: kanboard
+    container_name: kanboard
+    environment:
+      DB_DRIVER: mysql
+      DB_USERNAME: root
+      DB_PASSWORD: 71UjqFIgyzEG
+      DB_HOSTNAME: mysql
+      DB_NAME: kanboard
+    external_links:
+      - mysql:mysql
+    ports:
+      - "8081:80"
+    volumes:
+      - /opt/kanboard:/var/www/html
+    networks:
+      front:
+        ipv4_address: 172.36.238.15
+
+networks:
+    front:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.36.238.0/24
